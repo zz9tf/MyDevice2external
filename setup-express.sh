@@ -150,7 +150,9 @@ services:
     working_dir: /express
     volumes:
       - .:/express:rw
-    command: sh -c 'npm install nodemon && npm install && npm install @babel/core @babel/cli @babel/preset-env @babel/node && npm start'
+    command: sh -c 'npm install nodemon --legacy-watch && npm install && npm install @babel/core @babel/cli @babel/preset-env @babel/node && npm start'
+    ports:
+      - 3000:3000
     container_name: express_container
 networks:
   backend:

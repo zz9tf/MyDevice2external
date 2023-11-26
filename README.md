@@ -62,6 +62,12 @@ Now, your tunnel service already finished. Feel free to create more containers t
     ```bash
     ./setup-express.sh
     ```
+    
+    - Django framework with requirments.txt file
+
+    ```bash
+    ./setup-django.sh
+    ```
 
 ## Contributing
 

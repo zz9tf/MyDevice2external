@@ -10,12 +10,11 @@ WORKDIR /django
 # Install dependencies
 RUN pip install django
 
-EXPOSE 8000
 # Exit the container after project initialization
 CMD [\"sh\", \"-c\", \"django-admin startproject mysite && pip freeze > requirement.txt\"]" > Dockerfile
 
 docker build --no-cache -t django-init .
-docker run -v $(pwd):/django django-init &&
+docker run -v $(pwd):/django --rm django-init &&
 docker rmi -f django-init && 
 rm Dockerfile
 
@@ -190,8 +189,8 @@ services:
     volumes:
       - .:/django:rw
     command: sh -c 'pip install --upgrade pip && pip install -r ../requirement.txt && python manage.py runserver 0.0.0.0:8000'
-    ports:
-      - 8000:8000
+    networks:
+      - mydevice2external_tunnel
 networks:
-  backend:
-    external: true" > docker-compose.yml
+  mydevice2external_tunnel:
+      external: true" > docker-compose.yml

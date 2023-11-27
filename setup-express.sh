@@ -152,8 +152,11 @@ services:
       - .:/express:rw
     command: sh -c 'npm install nodemon --legacy-watch && npm install && npm install @babel/core @babel/cli @babel/preset-env @babel/node && npm start'
     ports:
-      - 3000:3000
+      - 3000
+    networks:
+      - mydevice2external_tunnel
     container_name: express_container
+    
 networks:
-  backend:
-    external: true" > docker-compose.yml
+  mydevice2external_tunnel:
+      external: true" > docker-compose.yml

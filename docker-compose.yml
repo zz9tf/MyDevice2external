@@ -1,8 +1,8 @@
 version: '3.9'
 
 networks:
-  frontend:
-  backend:
+  tunnel:
+    driver: bridge
 
 services:
   cloudflaretunnel:
@@ -13,5 +13,4 @@ services:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
     command: tunnel --no-autoupdate run
     networks:
-      - frontend
-      - backend
+      - tunnel

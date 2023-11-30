@@ -2,14 +2,6 @@
 npm install -g create-react-app &&
 npx create-react-app react-app --template typescript &&
 cd react-app &&
-npm install --save-dev nodemon ts-node &&
-echo "{
-  "watch": ["src"],
-  "ext": "ts,tsx",
-  "ignore": ["src/**/*.test.ts", "src/**/*.test.tsx"],
-  "exec": "ts-node src/index.tsx"
-}" > nodemon.json &&
-sed -i 's/"scripts": {/"scripts": {\n    "start": "nodemon",/' package.json &&
 echo "# Logs
 logs
 *.log
@@ -141,22 +133,39 @@ dist
 .yarn/install-state.gz
 .pnp.*" > .gitignore &&
 
-# Set up docker compose for express container creation
+echo "# Stage 1: Build React app
+FROM node:latest AS builder
+
+WORKDIR /app
+
+COPY package*.json ./
+RUN npm install
+
+COPY . .
+RUN npm run build
+
+# Stage 2: Serve built app with Nginx
+FROM nginx:latest
+
+# Copy build artifacts from the previous stage
+COPY --from=builder /app/build /usr/share/nginx/html
+
+# Expose port 80 for Nginx
+EXPOSE 80
+
+# Default command to start Nginx
+CMD [\"nginx\", \"-g\", \"daemon off;\"]" > dockerfile
+
+# Set up docker compose for react-typescript container creation
 echo "version: '3'
 
 services:
-  react:
-    image: node:latest
-    working_dir: /react
-    ports:
-      - 3000
-    volumes:
-      - .:/react:rw
-    command: sh -c 'npm install && npm start'
+  typescript:
+    build:
+      context: .
+      dockerfile: dockerfile
     networks:
       - mydevice2external_tunnel
-    container_name: react_container
-
 networks:
   mydevice2external_tunnel:
-      external: true" > docker-compose.yml
+    external: true" > docker-compose.yml

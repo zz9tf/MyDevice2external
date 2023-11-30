@@ -155,8 +155,6 @@ services:
       - 3000
     networks:
       - mydevice2external_tunnel
-    container_name: express_container
-    
 networks:
   mydevice2external_tunnel:
       external: true" > docker-compose.yml

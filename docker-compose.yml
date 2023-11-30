@@ -11,6 +11,6 @@ services:
     restart: unless-stopped
     environment:
       - TUNNEL_TOKEN=${TUNNEL_TOKEN}
-    command: tunnel --no-autoupdate run
+    command: tunnel --loglevel debug --no-autoupdate run
     networks:
       - tunnel

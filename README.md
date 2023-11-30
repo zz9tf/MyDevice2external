@@ -63,10 +63,16 @@ Now, your tunnel service already finished. Feel free to create more containers t
     ./setup-express.sh
     ```
     
-    - Django framework with requirments.txt file
+  - Django framework with requirments.txt file
 
     ```bash
     ./setup-django.sh
+    ```
+
+  - React typescript framework with nodemon.
+
+    ```bash
+    ./setup-reactTs.sh
     ```
 
 ## Contributing

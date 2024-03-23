@@ -1,11 +1,11 @@
 # My Device to External
 
-This repository is designed to enable your local device to act as a cloud service, allowing it to host multiple Docker containers that can be accessed externally. It applied cloudflare tunnel service to transfer any request from outside to your device safely and esaily. It also provided a list basic frameworks docker containers setup shell script, allowing people deploy their frameworks which can be accessed within one line command!
+This repository is designed to enable your **local device** to act as a **cloud service**, allowing it to host multiple Docker containers that can be accessed externally. It applied **cloudflare tunnel service** to transfer any request from outside to your device safely and esaily. It also provided a list **basic frameworks docker containers setup shell script**, allowing people deploy their frameworks which can be accessed within one line command!
 
 ## Problem it solved
-  - The unnecessary cost of cloud services.
-  - Safety problems and maintenance of external requests to local device.
-  - Difficult to deploy and port the development environment.
+  - The cost of cloud services - transfer the cloud services to local machine.
+  - Safety problems and maintenance of external requests to local device - container environment are isolated.
+  - Difficult to deploy and port the development environment - One command shell script to set up docker container.
 
 ## Getting Started
 
@@ -17,9 +17,9 @@ Before you can deploy your local device as a cloud service, ensure that you have
 
 - Docker: [Install Docker](https://docs.docker.com/get-docker/)
 - Docker Compose: [Install Docker Compose](https://docs.docker.com/compose/install/)
-- Domain name: [Get one domain name(https://www.godaddy.com/)]
+- Domain name: Get one domain name
 - Unix like terminal: Mac, WSL, Linux, ect.
-- Cloudflare account: To setup your domain name, and use their tunnel service in their zero trust service.
+- Cloudflare account: To setup your domain name, and use their tunnel service in their zero trust service. [cloudflare](https://www.cloudflare.com/) | [Zero trust](https://developers.cloudflare.com/cloudflare-one/setup/)
 
 ### Deployment
 
@@ -28,7 +28,7 @@ This repo suppose you already set up domain name and actived zero turst service 
 1. Clone this repository to your local machine:
 
    ```bash
-   git clone https://github.com/your-username/my-device-to-external.git
+   git clone https://github.com/zz9tf/MyDevice2external.git
    ```
 
 2. Navigate to the cloned repository:
@@ -73,6 +73,12 @@ Now, your tunnel service already finished. Feel free to create more containers t
 
     ```bash
     ./setup-reactTs.sh
+    ```
+
+  - SSH framework.
+
+    ```bash
+    ./setup-SSH.sh
     ```
 
 ## Contributing

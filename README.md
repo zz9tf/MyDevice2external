@@ -81,6 +81,8 @@ Now, your tunnel service already finished. Feel free to create more containers t
     ./setup-SSH.sh
     ```
 
+    More details in [connectLocalDriveWithSSH](https://github.com/zz9tf/MyDevice2external/blob/main/connectLocalDriveWithSSH.md)
+
 ## Contributing
 
 If you'd like to contribute to this project, please follow these guidelines:
